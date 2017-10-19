@@ -5,9 +5,8 @@
  */
 package br.com.livrariademo.dao;
 
+import br.com.livrariademo.model.Idioma;
 import br.com.livrariademo.util.ConexaoBD;
-import br.com.livrariademo.model.AcabamentoLivro;
-import br.com.livrariademo.model.Autor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,21 +20,21 @@ import javax.swing.JOptionPane;
  *
  * @author vinicius caetano
  */
-public class AcabamentoLivroDao {
+public class IdiomaDao {
+    
+     private Connection connection;
 
-    private Connection connection;
-
-    public AcabamentoLivroDao() throws SQLException {
+    public IdiomaDao() throws SQLException {
         connection = ConexaoBD.getConnection();
     }
 
-    public void Cadastrar(AcabamentoLivro acabamento) {
+    public void Cadastrar(Idioma idioma) {
 
         try {
             PreparedStatement preparedStatement = connection
-                    .prepareStatement("insert into acabamento (ddescricao) values (?)");
+                    .prepareStatement("insert into idioma (ddescricao) values (?)");
 
-            preparedStatement.setString(1, acabamento.getDescricao());
+            preparedStatement.setString(1, idioma.getDescricao());
 
             preparedStatement.executeUpdate();
 
@@ -47,7 +46,7 @@ public class AcabamentoLivroDao {
     public void Deletar(int codigo) {
         try {
             PreparedStatement preparedStatement = connection
-                    .prepareStatement("delete from acabamento where cod_acabamento=?");
+                    .prepareStatement("delete from idioma where cod_idioma=?");
 
             preparedStatement.setInt(1, codigo);
             preparedStatement.executeUpdate();
@@ -57,16 +56,16 @@ public class AcabamentoLivroDao {
         }
     }
 
-    public void Atualizar(AcabamentoLivro acabamento) {
+    public void Atualizar(Idioma idioma) {
 
         try {
             PreparedStatement preparedStatement = connection
-                    .prepareStatement("update acabamento set ddescricao=?"
-                            + "where cod_acabamento=?");
+                    .prepareStatement("update idioma set ddescricao=?"
+                            + "where cod_idioma=?");
 
-            preparedStatement.setString(1, acabamento.getDescricao());
+            preparedStatement.setString(1, idioma.getDescricao());
 
-            preparedStatement.setInt(2, acabamento.getCodigo());
+            preparedStatement.setInt(2, idioma.getCodigo());
 
             preparedStatement.executeUpdate();
 
@@ -75,67 +74,68 @@ public class AcabamentoLivroDao {
         }
     }
 
-    public List<AcabamentoLivro> Listar() {
-        List<AcabamentoLivro> acabamentoM = new ArrayList<>();
+    public List<Idioma> Listar() {
+        List<Idioma> idiomaM = new ArrayList<>();
         try {
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("select * from acabamento");
+            ResultSet rs = statement.executeQuery("select * from idioma");
             while (rs.next()) {
 
-                AcabamentoLivro acabamento = new AcabamentoLivro();
+                Idioma idioma = new Idioma();
 
-                acabamento.setCodigo(rs.getInt("cod_acabamento"));
-                acabamento.setDescricao(rs.getString("ddescricao"));
+                idioma.setCodigo(rs.getInt("cod_idioma"));
+                idioma.setDescricao(rs.getString("ddescricao"));
 
-                acabamentoM.add(acabamento);
+                idiomaM.add(idioma);
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro" + e.getMessage());
         }
 
-        return acabamentoM;
+        return idiomaM;
     }
 
-    public AcabamentoLivro Consultar(int codigo) {
-        AcabamentoLivro acabamento = new AcabamentoLivro();
+    public Idioma Consultar(int codigo) {
+        Idioma idioma = new Idioma();
         try {
             PreparedStatement preparedStatement = connection.
-                    prepareStatement("select * from acabamento where cod_acabamento=?");
+                    prepareStatement("select * from idioma where cod_idioma=?");
             preparedStatement.setInt(1, codigo);
             ResultSet rs = preparedStatement.executeQuery();
 
             if (rs.next()) {
 
-                acabamento.setCodigo(rs.getInt("cod_acabamento"));
-                acabamento.setDescricao(rs.getString("ddescricao"));
+                idioma.setCodigo(rs.getInt("cod_idioma"));
+                idioma.setDescricao(rs.getString("ddescricao"));
 
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro" + e.getMessage());
         }
 
-        return acabamento;
+        return idioma;
     }
     
-    public AcabamentoLivro ConsultarPorCodigo(int codigo) {
-		AcabamentoLivro acabamento = new AcabamentoLivro();
+    public Idioma ConsultarPorCodigo(int codigo) {
+		Idioma idioma = new Idioma();
 		try {
 			PreparedStatement preparedStatement = connection.
-					prepareStatement("select * from acabamento where cod_acabamento=?");
+					prepareStatement("select * from idioma where cod_idioma=?");
 			preparedStatement.setInt(1, codigo);
 			ResultSet rs = preparedStatement.executeQuery();
 			
 			if (rs.next()) {
-				acabamento.setCodigo(rs.getInt("cod_acabamento"));
-                                acabamento.setDescricao(rs.getString("ddescricao"));
+				idioma.setCodigo(rs.getInt("cod_idioma"));
+                                idioma.setDescricao(rs.getString("ddescricao"));
                         }
                         
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(null, "Erro" + e.getMessage());
 		}
 
-		return acabamento;
+		return idioma;
 	}
 
-
+    
+    
 }

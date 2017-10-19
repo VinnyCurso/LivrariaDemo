@@ -4,9 +4,49 @@
         <servlet-name>AcabamentoServlet</servlet-name>
         <servlet-class>br.com.livrariademo.control.AcabamentoServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AutorServlet</servlet-name>
+        <servlet-class>br.com.livrariademo.control.AutorServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditoraServlet</servlet-name>
+        <servlet-class>br.com.livrariademo.control.EditoraServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GeneroServlet</servlet-name>
+        <servlet-class>br.com.livrariademo.control.GeneroServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>IdiomaServlet</servlet-name>
+        <servlet-class>br.com.livrariademo.control.IdiomaServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ClienteServlet</servlet-name>
+        <servlet-class>br.com.livrariademo.control.ClienteServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AcabamentoServlet</servlet-name>
         <url-pattern>/AcabamentoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AutorServlet</servlet-name>
+        <url-pattern>/AutorServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditoraServlet</servlet-name>
+        <url-pattern>/EditoraServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GeneroServlet</servlet-name>
+        <url-pattern>/GeneroServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>IdiomaServlet</servlet-name>
+        <url-pattern>/IdiomaServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ClienteServlet</servlet-name>
+        <url-pattern>/ClienteServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

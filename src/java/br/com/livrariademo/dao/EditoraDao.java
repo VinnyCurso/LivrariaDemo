@@ -5,9 +5,8 @@
  */
 package br.com.livrariademo.dao;
 
+import br.com.livrariademo.model.Editora;
 import br.com.livrariademo.util.ConexaoBD;
-import br.com.livrariademo.model.AcabamentoLivro;
-import br.com.livrariademo.model.Autor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,21 +20,21 @@ import javax.swing.JOptionPane;
  *
  * @author vinicius caetano
  */
-public class AcabamentoLivroDao {
-
+public class EditoraDao {
+    
     private Connection connection;
 
-    public AcabamentoLivroDao() throws SQLException {
+    public EditoraDao() throws SQLException {
         connection = ConexaoBD.getConnection();
     }
 
-    public void Cadastrar(AcabamentoLivro acabamento) {
+    public void Cadastrar(Editora editora) {
 
         try {
             PreparedStatement preparedStatement = connection
-                    .prepareStatement("insert into acabamento (ddescricao) values (?)");
+                    .prepareStatement("insert into editora (ddescricao) values (?)");
 
-            preparedStatement.setString(1, acabamento.getDescricao());
+            preparedStatement.setString(1, editora.getDescricao());
 
             preparedStatement.executeUpdate();
 
@@ -47,7 +46,7 @@ public class AcabamentoLivroDao {
     public void Deletar(int codigo) {
         try {
             PreparedStatement preparedStatement = connection
-                    .prepareStatement("delete from acabamento where cod_acabamento=?");
+                    .prepareStatement("delete from editora where cod_editora=?");
 
             preparedStatement.setInt(1, codigo);
             preparedStatement.executeUpdate();
@@ -57,16 +56,16 @@ public class AcabamentoLivroDao {
         }
     }
 
-    public void Atualizar(AcabamentoLivro acabamento) {
+    public void Atualizar(Editora editora) {
 
         try {
             PreparedStatement preparedStatement = connection
-                    .prepareStatement("update acabamento set ddescricao=?"
-                            + "where cod_acabamento=?");
+                    .prepareStatement("update editora set ddescricao=?"
+                            + "where cod_editora=?");
 
-            preparedStatement.setString(1, acabamento.getDescricao());
+            preparedStatement.setString(1, editora.getDescricao());
 
-            preparedStatement.setInt(2, acabamento.getCodigo());
+            preparedStatement.setInt(2, editora.getCodigo());
 
             preparedStatement.executeUpdate();
 
@@ -75,67 +74,67 @@ public class AcabamentoLivroDao {
         }
     }
 
-    public List<AcabamentoLivro> Listar() {
-        List<AcabamentoLivro> acabamentoM = new ArrayList<>();
+    public List<Editora> Listar() {
+        List<Editora> editoraM = new ArrayList<>();
         try {
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("select * from acabamento");
+            ResultSet rs = statement.executeQuery("select * from editora");
             while (rs.next()) {
 
-                AcabamentoLivro acabamento = new AcabamentoLivro();
+                Editora editora = new Editora();
 
-                acabamento.setCodigo(rs.getInt("cod_acabamento"));
-                acabamento.setDescricao(rs.getString("ddescricao"));
+                editora.setCodigo(rs.getInt("cod_editora"));
+                editora.setDescricao(rs.getString("ddescricao"));
 
-                acabamentoM.add(acabamento);
+                editoraM.add(editora);
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro" + e.getMessage());
         }
 
-        return acabamentoM;
+        return editoraM;
     }
 
-    public AcabamentoLivro Consultar(int codigo) {
-        AcabamentoLivro acabamento = new AcabamentoLivro();
+    public Editora Consultar(int codigo) {
+        Editora editora = new Editora();
         try {
             PreparedStatement preparedStatement = connection.
-                    prepareStatement("select * from acabamento where cod_acabamento=?");
+                    prepareStatement("select * from editora where cod_editora=?");
             preparedStatement.setInt(1, codigo);
             ResultSet rs = preparedStatement.executeQuery();
 
             if (rs.next()) {
 
-                acabamento.setCodigo(rs.getInt("cod_acabamento"));
-                acabamento.setDescricao(rs.getString("ddescricao"));
+                editora.setCodigo(rs.getInt("cod_editora"));
+                editora.setDescricao(rs.getString("ddescricao"));
 
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro" + e.getMessage());
         }
 
-        return acabamento;
+        return editora;
     }
     
-    public AcabamentoLivro ConsultarPorCodigo(int codigo) {
-		AcabamentoLivro acabamento = new AcabamentoLivro();
+    public Editora ConsultarPorCodigo(int codigo) {
+		Editora editora = new Editora();
 		try {
 			PreparedStatement preparedStatement = connection.
-					prepareStatement("select * from acabamento where cod_acabamento=?");
+					prepareStatement("select * from editora where cod_editora=?");
 			preparedStatement.setInt(1, codigo);
 			ResultSet rs = preparedStatement.executeQuery();
 			
 			if (rs.next()) {
-				acabamento.setCodigo(rs.getInt("cod_acabamento"));
-                                acabamento.setDescricao(rs.getString("ddescricao"));
+				editora.setCodigo(rs.getInt("cod_editora"));
+                                editora.setDescricao(rs.getString("ddescricao"));
                         }
                         
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(null, "Erro" + e.getMessage());
 		}
 
-		return acabamento;
+		return editora;
 	}
 
-
+    
 }

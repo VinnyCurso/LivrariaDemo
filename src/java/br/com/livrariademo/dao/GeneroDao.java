@@ -5,9 +5,8 @@
  */
 package br.com.livrariademo.dao;
 
+import br.com.livrariademo.model.Genero;
 import br.com.livrariademo.util.ConexaoBD;
-import br.com.livrariademo.model.AcabamentoLivro;
-import br.com.livrariademo.model.Autor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,21 +20,21 @@ import javax.swing.JOptionPane;
  *
  * @author vinicius caetano
  */
-public class AcabamentoLivroDao {
+public class GeneroDao {
+    
+     private Connection connection;
 
-    private Connection connection;
-
-    public AcabamentoLivroDao() throws SQLException {
+    public GeneroDao() throws SQLException {
         connection = ConexaoBD.getConnection();
     }
 
-    public void Cadastrar(AcabamentoLivro acabamento) {
+    public void Cadastrar(Genero genero) {
 
         try {
             PreparedStatement preparedStatement = connection
-                    .prepareStatement("insert into acabamento (ddescricao) values (?)");
+                    .prepareStatement("insert into genero (ddescricao) values (?)");
 
-            preparedStatement.setString(1, acabamento.getDescricao());
+            preparedStatement.setString(1, genero.getDescricao());
 
             preparedStatement.executeUpdate();
 
@@ -47,7 +46,7 @@ public class AcabamentoLivroDao {
     public void Deletar(int codigo) {
         try {
             PreparedStatement preparedStatement = connection
-                    .prepareStatement("delete from acabamento where cod_acabamento=?");
+                    .prepareStatement("delete from genero where cod_genero=?");
 
             preparedStatement.setInt(1, codigo);
             preparedStatement.executeUpdate();
@@ -57,16 +56,16 @@ public class AcabamentoLivroDao {
         }
     }
 
-    public void Atualizar(AcabamentoLivro acabamento) {
+    public void Atualizar(Genero genero) {
 
         try {
             PreparedStatement preparedStatement = connection
-                    .prepareStatement("update acabamento set ddescricao=?"
-                            + "where cod_acabamento=?");
+                    .prepareStatement("update genero set ddescricao=?"
+                            + "where cod_genero=?");
 
-            preparedStatement.setString(1, acabamento.getDescricao());
+            preparedStatement.setString(1, genero.getDescricao());
 
-            preparedStatement.setInt(2, acabamento.getCodigo());
+            preparedStatement.setInt(2, genero.getCodigo());
 
             preparedStatement.executeUpdate();
 
@@ -75,67 +74,67 @@ public class AcabamentoLivroDao {
         }
     }
 
-    public List<AcabamentoLivro> Listar() {
-        List<AcabamentoLivro> acabamentoM = new ArrayList<>();
+    public List<Genero> Listar() {
+        List<Genero> generoM = new ArrayList<>();
         try {
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("select * from acabamento");
+            ResultSet rs = statement.executeQuery("select * from genero");
             while (rs.next()) {
 
-                AcabamentoLivro acabamento = new AcabamentoLivro();
+                Genero genero = new Genero();
 
-                acabamento.setCodigo(rs.getInt("cod_acabamento"));
-                acabamento.setDescricao(rs.getString("ddescricao"));
+                genero.setCodigo(rs.getInt("cod_genero"));
+                genero.setDescricao(rs.getString("ddescricao"));
 
-                acabamentoM.add(acabamento);
+                generoM.add(genero);
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro" + e.getMessage());
         }
 
-        return acabamentoM;
+        return generoM;
     }
 
-    public AcabamentoLivro Consultar(int codigo) {
-        AcabamentoLivro acabamento = new AcabamentoLivro();
+    public Genero Consultar(int codigo) {
+        Genero genero = new Genero();
         try {
             PreparedStatement preparedStatement = connection.
-                    prepareStatement("select * from acabamento where cod_acabamento=?");
+                    prepareStatement("select * from genero where cod_genero=?");
             preparedStatement.setInt(1, codigo);
             ResultSet rs = preparedStatement.executeQuery();
 
             if (rs.next()) {
 
-                acabamento.setCodigo(rs.getInt("cod_acabamento"));
-                acabamento.setDescricao(rs.getString("ddescricao"));
+                genero.setCodigo(rs.getInt("cod_genero"));
+                genero.setDescricao(rs.getString("ddescricao"));
 
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro" + e.getMessage());
         }
 
-        return acabamento;
+        return genero;
     }
     
-    public AcabamentoLivro ConsultarPorCodigo(int codigo) {
-		AcabamentoLivro acabamento = new AcabamentoLivro();
+    public Genero ConsultarPorCodigo(int codigo) {
+		Genero genero = new Genero();
 		try {
 			PreparedStatement preparedStatement = connection.
-					prepareStatement("select * from acabamento where cod_acabamento=?");
+					prepareStatement("select * from genero where cod_genero=?");
 			preparedStatement.setInt(1, codigo);
 			ResultSet rs = preparedStatement.executeQuery();
 			
 			if (rs.next()) {
-				acabamento.setCodigo(rs.getInt("cod_acabamento"));
-                                acabamento.setDescricao(rs.getString("ddescricao"));
+				genero.setCodigo(rs.getInt("cod_genero"));
+                                genero.setDescricao(rs.getString("ddescricao"));
                         }
                         
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(null, "Erro" + e.getMessage());
 		}
 
-		return acabamento;
+		return genero;
 	}
 
-
+    
 }

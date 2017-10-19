@@ -50,7 +50,7 @@ public class AcabamentoLivroBusiness {
             throw new Exception("É necessário preencher o campo descricao.");
 }
      if (acabamento.getDescricao().isEmpty()) {
-            throw new Exception("É necessário preencher o campo nome.");
+            throw new Exception("É necessário preencher o campo descricao.");
 }
         return true;
      }
