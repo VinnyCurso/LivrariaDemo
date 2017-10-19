@@ -15,9 +15,9 @@ public class Livro {
     
     private int codigo;
     private Editora editora;
-    private Idioma idioma;
     private Autor autor;
     private Genero genero;
+    private Idioma idioma;
     private AcabamentoLivro acabamento;
     private Date dataPublicacao;
     private String nome;
