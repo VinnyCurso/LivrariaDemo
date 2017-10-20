@@ -5,6 +5,7 @@
  */
 package br.com.livrariademo.model;
 
+import java.time.Instant;
 import java.util.Date;
 
 /**
@@ -30,6 +31,17 @@ public class Cliente {
         this.telefone = telefone;
         this.cpf = cpf;
         this.dataCadastro = dataCadastro;
+    }
+    
+     public Cliente(String str){
+        String[] vetor = str.split(";");
+        this.codigo = Integer.parseInt(vetor[0]);
+        this.nome = vetor[1];
+        this.email = vetor[2];
+        this.telefone = vetor[3];
+        this.cpf = Long.parseLong(vetor[4]);
+//        this.dataCadastro = new java.sql.Date(vetor[5]);
+
     }
 
     public int getCodigo() {
