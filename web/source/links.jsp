@@ -23,6 +23,16 @@
          <a href="Cliente.jsp">Cliente</a>
         <a href="listCliente.jsp"> Lista Cliente</a>
         <hr>
+         <a href="Livro.jsp">Livro</a>
+        <a href="listLivro.jsp"> Lista Livro</a>
+        <hr>
+         <a href="Usuario.jsp">Usuario</a>
+        <a href="listUsuario.jsp"> Lista Usuario</a>
+        <hr>
+         <a href="Venda.jsp">Venda</a>
+        <a href="listVenda.jsp"> Lista Venda</a>
+        
+        <hr>
         <a href="../LoginAutenticacao.jsp"> Login</a>
         <hr>
         

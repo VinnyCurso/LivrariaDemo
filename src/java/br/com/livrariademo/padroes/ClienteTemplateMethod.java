@@ -27,7 +27,7 @@ public abstract class ClienteTemplateMethod {
       
       public abstract boolean ePrimeiro(Cliente cliente1, Cliente cliente2);
       
-       public Iterator<Cliente> listagemDeProfessorsNome() throws Exception {
+       public Iterator<Cliente> listagemDeClientesNome() throws Exception {
         try {
             final ArrayList<Cliente> ArrayClientes = new ArrayList<>();
             FileReader fr = new FileReader(Arquivo);

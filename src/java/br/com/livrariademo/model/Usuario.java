@@ -5,8 +5,8 @@
  */
 package br.com.livrariademo.model;
 
-import java.util.ArrayList;
-import java.util.List;
+//import java.util.ArrayList;
+//import java.util.List;
 
 /**
  *
@@ -14,23 +14,26 @@ import java.util.List;
  */
 public class Usuario {
     
+    private int codigo;
     private String login;
     private String password;
     private String confirmacaoPassword;
     private String name;
-    private List<Role> roles = new ArrayList<>();
+//    private List<Role> roles = new ArrayList<>();
     private int ativo;
 
     public Usuario() {
     }
 
-    public Usuario(String login, String password, String confirmacaoPassword) {
+    public Usuario(int codigo,String login, String password, String confirmacaoPassword) {
+        this.codigo=codigo;
         this.login = login;
         this.password = password;
         this.confirmacaoPassword = confirmacaoPassword;
     }
 
-    public Usuario(String login, String password, String confirmacaoPassword, String name, int ativo) {
+    public Usuario(int codigo,String login, String password, String confirmacaoPassword, String name, int ativo) {
+        this.codigo=codigo;
         this.login = login;
         this.password = password;
         this.confirmacaoPassword = confirmacaoPassword;
@@ -39,7 +42,14 @@ public class Usuario {
     }
     
     
+ public int getCodigo() {
+        return codigo;
+    }
 
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+    
     public String getLogin() {
         return login;
     }
@@ -72,13 +82,13 @@ public class Usuario {
         this.name = name;
     }
 
-    public List<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
-    }
+//    public List<Role> getRoles() {
+//        return roles;
+//    }
+//
+//    public void setRoles(List<Role> roles) {
+//        this.roles = roles;
+//    }
 
     public int getAtivo() {
         return ativo;
@@ -94,6 +104,8 @@ public class Usuario {
 			return true;
 		}else return false;
 	}
+
+   
  
     
 }
