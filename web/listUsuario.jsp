@@ -11,16 +11,18 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <jsp:include page = "source/headBoostrap.jsp" />
         <title>Relatorio Usuario</title>
     </head>
     <body>
+        <jsp:include page = "source/menuNavbar.jsp" />
         <h1>Relatorio Usuario</h1>
-        
-            <div>
+
+        <div class="container">
             <h2>Listando Relatorio Usuario</h2>
             <p> Segue abaixo a lista de dados dos usuarios</p>                                                                                 
-            <div>          
-                <table>
+            <div class="table-responsive">  
+                <table class="table table-striped">
                     <thead>
                         <tr>
                             <th>Codigo</th>
@@ -42,14 +44,24 @@
                                 <td><c:out value="${usuario.name}"/> </td>
                                 <td><c:out value="${usuario.ativo}"/> </td>
 
-                                <td><a href="UsuarioServlet?action=edit&codigo=<c:out value="${usuario.codigo}"/>">Atualizar</a></td>
-                                <td><a href="UsuarioServlet?action=delete&codigo=<c:out value="${usuario.codigo}"/>"> Excluir</a></td>        
+                                <td>
+                                    <a class="btn btn-warning" href="UsuarioServlet?action=edit&codigo=<c:out value="${usuario.codigo}"/>" data-toggle="tooltip"
+                                       title="Clique para Alterar/Atualizar os Dados">
+                                        <span class="glyphicon glyphicon-edit"></span> Atualizar</a>
+                                </td>
+
+                                <td>
+                                    <a class="btn btn-danger" href="UsuarioServlet?action=delete&codigo=<c:out value="${usuario.codigo}"/>" data-toggle="tooltip"
+                                       title="Clique para Excluir/Deletar os Dados">
+                                        <span class="glyphicon-remove-circle"></span> Excluir</a>
+                                </td>
                             </tr>
                         </c:forEach>
                     </tbody>
                 </table>
             </div>
-            <a href="UsuarioServlet?action=insert">  Adicionar</a>
+            <a class="btn btn-primary" data-toggle="tooltip" title="Clique adicionar nova Informação" href="UsuarioServlet?action=insert">
+                <span class=" glyphicon glyphicon-saved"></span> Adicionar</a>
         </div>
     </body>
 </html>

@@ -96,9 +96,5 @@ public class Cliente {
     public String toString() {
         return "Cliente{" + "codigo=" + codigo + ", nome=" + nome + ", email=" + email + ", telefone=" + telefone + ", cpf=" + cpf + ", dataCadastro=" + dataCadastro + '}';
     }
-    
-    
-    
-    
-    
+ 
 }

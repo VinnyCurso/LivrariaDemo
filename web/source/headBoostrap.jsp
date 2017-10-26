@@ -1,6 +1,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
+<%@taglib tagdir="/WEB-INF/tags/"  prefix="tagLiv"%>
 <link href="css/cssBootstrap/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 <link href="css/cssBootstrap/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">

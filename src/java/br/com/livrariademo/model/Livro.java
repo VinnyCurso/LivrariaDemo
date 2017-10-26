@@ -70,6 +70,13 @@ public class Livro {
         this.capa = capa;
     }
 
+    public Livro(int codigo, String nome, String descricao, int numeroPaginas) {
+        this.codigo = codigo;
+        this.nome = nome;
+        this.descricao = descricao;
+        this.numeroPaginas = numeroPaginas;
+    }
+
     public int getCodigo() {
         return codigo;
     }

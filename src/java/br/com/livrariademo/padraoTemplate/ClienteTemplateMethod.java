@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.livrariademo.padroes;
+package br.com.livrariademo.padraoTemplate;
 
 import br.com.livrariademo.model.Cliente;
 import java.io.BufferedReader;

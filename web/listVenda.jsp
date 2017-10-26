@@ -11,16 +11,18 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <jsp:include page = "source/headBoostrap.jsp" />
         <title>Relatorio Venda</title>
     </head>
     <body>
+        <jsp:include page = "source/menuNavbar.jsp" />
         <h1>Relatorio Venda</h1>
-        
-            <div>
+
+        <div class="container">
             <h2>Listando Relatorio Venda</h2>
             <p> Segue abaixo a lista de dados dos Venda</p>                                                                                 
-            <div>          
-                <table>
+            <div class="table-responsive">          
+                <table class="table table-striped">
                     <thead>
                         <tr>
                             <th>Codigo</th>
@@ -31,23 +33,33 @@
                             <th colspan=2>Ação</th>
                         </tr>
                     </thead>
-                     <c:forEach items="${vendaM}" var="venda">
-                            <tr>
-                                <td><c:out value="${venda.codigo}"/> </td>
-                                <td><c:out value="${venda.cliente}"/> </td>
-                                <td><c:out value="${venda.usuario}"/> </td>
-                                <td><c:out value="${venda.valorTotal}"/> </td>
-                                <td><c:out value="${venda.tipoPagamento}"/> </td>
-                                         
+                    <c:forEach items="${vendaM}" var="venda">
+                        <tr>
+                            <td><c:out value="${venda.codigo}"/> </td>
+                            <td><c:out value="${venda.cliente}"/> </td>
+                            <td><c:out value="${venda.usuario}"/> </td>
+                            <td><c:out value="${venda.valorTotal}"/> </td>
+                            <td><c:out value="${venda.tipoPagamento}"/> </td>
 
-                                <td><a href="VendaServlet?action=edit&codigo=<c:out value="${venda.codigo}"/>">Atualizar</a></td>
-                                <td><a href="VendaServlet?action=delete&codigo=<c:out value="${venda.codigo}"/>"> Excluir</a></td>        
-                            </tr>
-                        </c:forEach>
+                            <td>
+                                <a class="btn btn-warning" href="VendaServlet?action=edit&codigo=<c:out value="${venda.codigo}"/>" data-toggle="tooltip"
+                                   title="Clique para Alterar/Atualizar os Dados">
+                                    <span class="glyphicon glyphicon-edit"></span> Atualizar</a>
+                            </td>
+
+                            <td>
+                                <a class="btn btn-danger" href="VendaServlet?action=delete&codigo=<c:out value="${venda.codigo}"/>" data-toggle="tooltip"
+                                   title="Clique para Excluir/Deletar os Dados">
+                                    <span class="glyphicon-remove-circle"></span> Excluir</a>
+                            </td>
+
+                        </tr>
+                    </c:forEach>
                     </tbody>
                 </table>
             </div>
-            <a href="VendaServlet?action=insert">  Adicionar</a>
+            <a class="btn btn-primary" data-toggle="tooltip" title="Clique adicionar nova Informação" href="VendaServlet?action=insert">
+                <span class=" glyphicon glyphicon-saved"></span> Adicionar</a>
         </div>
     </body>
 </html>

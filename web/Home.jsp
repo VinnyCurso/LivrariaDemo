@@ -1,6 +1,6 @@
 <%-- 
-    Document   : index
-    Created on : 18/10/2017, 14:55:48
+    Document   : Home
+    Created on : 26/10/2017, 17:28:39
     Author     : vinicius caetano
 --%>
 
@@ -17,7 +17,9 @@
         <jsp:include page = "source/menuNavbar.jsp" />
         <h1>Livraria Demo</h1>
         
-        <jsp:forward page="LoginAutenticacao.jsp" />
+        <jsp:include page = "source/carrosel.jsp" />
+        <jsp:include page = "source/links.jsp" />
         </div>
+        <jsp:include page = "source/footer.jsp" />
     </body>
 </html>

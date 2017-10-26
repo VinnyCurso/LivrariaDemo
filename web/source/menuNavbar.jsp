@@ -1,4 +1,6 @@
-    <nav class="navbar navbar-inverse">
+ <%@taglib tagdir="/WEB-INF/tags/"  prefix="tagLiv"%>    
+
+<nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#">Livraria Demo</a>
@@ -32,8 +34,20 @@
                         </ul>
                     </li>
                 </ul>
+                
+                 <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <label class="navbar-brand">Usuario:<tagLiv:StatusLogado/></label>
+                        <img src="image/usuario.png" width="50" alt="logado" title="logado">
+                    </li>
+                </ul>
+    
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/Sair"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="../LoginAutenticacao.jsp"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                 </ul>
             </div>
         </nav>
+

@@ -11,49 +11,62 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <jsp:include page = "source/headBoostrap.jsp" />
         <title>Formulario Usuario</title>
     </head>
     <body>
+        <jsp:include page = "source/menuNavbar.jsp" />
         <h1>Formulario Usuario</h1>
-        
-         <fieldset>
-             <legend>Formulario Usuario</legend>
-            <form name="formUsuario" method="post" action="UsuarioServlet">
-                
-                <div>
-                <label>Codigo :</label>
-                <input type="number" name="codigo" placeholder="000" readonly="readonly" value="<c:out value="${usuario.codigo}"/>"> <br/>
-               </div>
-               
-               <div>
-                <label>Login :</label>
-                <input type="email" name="login" required="true"  placeholder="login" value="<c:out value="${usuario.login}"/>"> <br/>
-                </div>
-                
-                <div>
-                <label>Password :</label>
-                <input type="password" name="password" required="true"  placeholder="password" value="<c:out value="${usuario.password}"/>"> <br/>
-                </div>
-                
-                <div>
-                <label>Confirmação Password :</label>
-                <input type="password" name="confirmacaoPassword" required="true"  placeholder="confirmacaoPassword" value="<c:out value="${usuario.confirmacaoPassword}"/>"> <br/>
-                </div>
-                
-                <div>
-                <label>Nome :</label>
-                <input type="text" name="name" required="true"  placeholder="name" value="<c:out value="${usuario.name}"/>"> <br/>
-                </div>
-                
-                <div>
-                <label>Ativo :</label>
-                <input type="number" name="ativo" required="true"  placeholder="ativo" value="<c:out value="${usuario.ativo}"/>"> <br/>
-                </div>
- 
-                <button type="reset" value="Limpar"/>Limpar</button>
-                <button type="submit" value="Salvar"/>Salvar</button>
-                   
+
+        <div class="container">
+            <fieldset>
+                <legend>Formulario Usuario</legend>
+                <form name="formUsuario" method="post" action="UsuarioServlet">
+
+                    <div  class="form-group">
+                        <label>Codigo :</label>
+                        <input type="number" name="codigo" class="form-control" placeholder="000" readonly="readonly" value="<c:out value="${usuario.codigo}"/>"> <br/>
+                    </div>
+
+                    <div  class="form-group">
+                        <label>Login :</label>
+                        <input type="email" name="login" class="form-control" required="true"  placeholder="login" value="<c:out value="${usuario.login}"/>"> <br/>
+                    </div>
+
+                    <div  class="form-group">
+                        <label>Password :</label>
+                        <input type="password" name="password" class="form-control" required="true"  placeholder="password" value="<c:out value="${usuario.password}"/>"> <br/>
+                    </div>
+
+                    <div  class="form-group">
+                        <label>Confirmação Password :</label>
+                        <input type="password" name="confirmacaoPassword" class="form-control" required="true"  placeholder="confirmacaoPassword" value="<c:out value="${usuario.confirmacaoPassword}"/>"> <br/>
+                    </div>
+
+                    <div  class="form-group">
+                        <label>Nome :</label>
+                        <input type="text" name="name" class="form-control" required="true"  placeholder="name" value="<c:out value="${usuario.name}"/>"> <br/>
+                    </div>
+
+                    <div  class="form-group">
+                        <label>Ativo :</label>
+                        <input type="number" name="ativo" class="form-control" required="true"  placeholder="ativo" value="<c:out value="${usuario.ativo}"/>"> <br/>
+                    </div>
+
+                    <button class="btn btn-large btn btn-info" type="reset" value="Limpar"
+                            data-toggle="tooltip"  title="Clique para Limpar Campos">
+                        <span class=" glyphicon glyphicon-erase"></span>
+                        Limpar
+                    </button>
+
+                    <button class="btn btn-large btn btn-success" data-toggle="tooltip" type="submit" 
+                            title="Clique para Salvar" value="Salvar">
+                        <span class=" glyphicon glyphicon-send"></span>
+                        Salvar
+                    </button>
+
                 </form>
             </fieldset>
+        </div>
     </body>
 </html>
